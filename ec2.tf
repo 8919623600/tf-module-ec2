@@ -8,7 +8,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "public_instance" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
-  subnet_id               = aws_subnet.public_subnet.id
+  subnet_id               = aws_subnet.public_subnet[0].id
   
   tags = {
     Name = "public-${var.ENV}-server"
