@@ -16,13 +16,13 @@ resource "aws_instance" "public_instance" {
 
 }
 
-# resource "aws_instance" "private_instance" {
-#   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
-#   instance_type           = var.instance_type
-#   subnet_id               = var.pub_subnet_id
+resource "aws_instance" "private_instance" {
+  ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
+  instance_type           = var.instance_type
+  subnet_id               = module.vpc.private_subnet_id
   
-#   tags = {
-#     Name = "private-${var.ENV}-server"
-#   }
+  tags = {
+    Name = "private-${var.ENV}-server"
+  }
 
-# }
+}
