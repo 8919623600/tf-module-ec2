@@ -8,7 +8,8 @@ data "aws_ami" "ami" {
 
 data "aws_subnet" "pub_subnet" {
   filter {
-    name_regex = "roboshop-Dev-public-subnet-"
+    name   = "cidrBlock"
+    values = var.PUBLIC_SUBNET_CIDR[0]
   }
 }
 
