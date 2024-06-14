@@ -22,7 +22,7 @@ resource "aws_instance" "public_instance" {
 resource "aws_instance" "public_instance-2" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
-  subnet_id               = var.aws_subnet.public_subnet.id
+  subnet_id               = var.public_subnet
   
   tags = {
     Name = "public-${var.ENV}-server-2"
