@@ -7,7 +7,7 @@ data "aws_ami" "ami" {
 }
 
 data "aws_subnet" "pub_subnet" {
-  filter = {
+  filter {
     name_regex = "roboshop-Dev-public-subnet-"
   }
 }
