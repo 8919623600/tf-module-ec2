@@ -6,8 +6,6 @@ data "aws_ami" "ami" {
 
 }
 
-
-
 resource "aws_instance" "public_instance" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
@@ -17,19 +15,6 @@ resource "aws_instance" "public_instance" {
   tags = {
     Name = "public-${var.ENV}-server"
   }
-}
-
-resource "aws_instance" "public_instance-2" {
-  ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
-  instance_type           = var.instance_type
-  subnet_id               = var.public_subnet
-  
-  tags = {
-    Name = "public-${var.ENV}-server-2"
-  }
-
-
-
 }
 
 resource "aws_instance" "private_instance" {
