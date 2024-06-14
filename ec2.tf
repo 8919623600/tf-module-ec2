@@ -9,7 +9,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "public_instance" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
-  subnet_id               = var.public_subnet_id
+  
   
 
   
