@@ -31,7 +31,7 @@ resource "aws_instance" "public_instance-2" {
   subnet_id               = data.aws_subnet.pub_subnet.id
   
   tags = {
-    Name = "public-${var.ENV}-server"
+    Name = "public-${var.ENV}-server-2"
   }
 
 
