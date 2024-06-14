@@ -19,15 +19,15 @@ resource "aws_instance" "public_instance" {
   }
 }
 
-# resource "aws_instance" "private_instance" {
-#   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
-#   instance_type           = var.instance_type
+resource "aws_instance" "private_instance" {
+  ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
+  instance_type           = var.instance_type
+  subnet_id               = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS[0]
    
 
   
-  
-#   tags = {
-#     Name = "private-${var.ENV}-server"
-#   }
+  tags = {
+    Name = "private-${var.ENV}-server"
+  }
 
-# }
+}
