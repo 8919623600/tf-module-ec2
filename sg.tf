@@ -1,7 +1,9 @@
 resource "aws_security_group" "sample_sg" {
   name        = "terraform-sg"
   description = "Allow TLS inbound traffic and all outbound traffic"
-   vpc_id     = data.terraform_remote_state.vpc.outputs.VPC_ID
+  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
+
+resource "aws_vpc_security_group_ingress_rule" "allow_ingress" {
 
   dynamic ingress {
     for_each = var.ingress_rule
@@ -13,6 +15,9 @@ resource "aws_security_group" "sample_sg" {
     cidr_blocks     = ingress.value["cidr_blocks"]
     }
   }
+}
+
+resource "aws_vpc_security_group_egress_rule" "allow_egress" {
    dynamic egress {
     for_each = var.egress_rule
     content {
@@ -23,7 +28,7 @@ resource "aws_security_group" "sample_sg" {
       cidr_blocks     = egress.value["cidr_blocks"]
     }
    }
-
+}
 
   tags = {
     Name = "terraform-sg"
