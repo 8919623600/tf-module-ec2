@@ -13,7 +13,7 @@ variable  "ingress_rule" {
       protocol        = "tcp"
       cidr_blocks     = ["0.0.0.0/0"]
       
-    }
+    },
     {
       description     = "web"
       from_port       = 80
