@@ -38,7 +38,7 @@ variable  "ingress_rule" {
 } 
 
 
-variable egress_rule {
+variable "egress_rule" {
     default = [ {
       description     = "egress all"
       from_port       = 0
