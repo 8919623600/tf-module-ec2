@@ -53,3 +53,5 @@ variable "egress_rule" {
     },
     ]
 }
+
+variable "SG_ID" {}
