@@ -1,4 +1,4 @@
-resource "aws_security_group" "sample_sg" {
+resource "aws_security_group" "roboshop_sg" {
   name        = "my_sg"
   description = "Allow TLS inbound traffic and all outbound traffic"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
