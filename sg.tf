@@ -9,8 +9,9 @@ tags = {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
-  security_group_id = aws_security_group.sample_sg.id
+  
   dynamic ingress {
+    security_group_id = aws_security_group.sample_sg.id
     for_each = var.ingress_rule
     content {
     description     = ingress.value["description"]
@@ -23,8 +24,9 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
- security_group_id = aws_security_group.sample_sg.id
+ 
    dynamic egress {
+    security_group_id = aws_security_group.sample_sg.id
     for_each = var.egress_rule
     content {
       description     = egress.value["description"]
