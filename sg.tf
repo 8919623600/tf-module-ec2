@@ -30,7 +30,7 @@ tags = {
       cidr_blocks     = egress.value["cidr_blocks"]
     }
    }
-depends_on = [data.terraform_remote_state.vpc.outputs.VPC_ID]
+depends_on = [vpc_id]
 
 
 }
