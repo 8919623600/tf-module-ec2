@@ -16,6 +16,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ingress" {
   dynamic ingress {
     for_each = var.ingress_rule
     content {
+    security_group_id = aws_security_group.sample_sg.id
     description     = ingress.value["description"]
     from_port       = ingress.value["from_port"]
     to_port         = ingress.value["to_port"]
@@ -29,6 +30,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_egress" {
    dynamic egress {
     for_each = var.egress_rule
     content {
+      security_group_id = aws_security_group.sample_sg.id
       description     = egress.value["description"]
       from_port       = egress.value["from_port"]
       to_port         = egress.value["to_port"]
