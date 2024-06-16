@@ -18,7 +18,7 @@ resource "aws_instance" "public_instance" {
   tags = {
     Name = "public-${var.ENV}-server"
   }
-  depends_on = [data.terraform_remote_state.vpc.aws_vpc.roboshop_vpc]
+  depends_on = [aws_vpc.roboshop_vpc]
 }
 
 resource "aws_instance" "private_instance" {
@@ -31,5 +31,5 @@ resource "aws_instance" "private_instance" {
   tags = {
     Name = "private-${var.ENV}-server"
   }
-   depends_on = [data.terraform_remote_state.vpc.aws_vpc.roboshop_vpc]
+   depends_on = [aws_vpc.roboshop_vpc]
 }
