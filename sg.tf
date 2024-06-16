@@ -1,7 +1,7 @@
 resource "aws_security_group" "sample_sg" {
   name        = "my_sg"
   description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
+  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID[0]
 
   dynamic ingress {
     for_each = var.ingress_rule
