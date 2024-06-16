@@ -41,7 +41,7 @@ variable  "ingress_rule" {
     ]
 } 
 
-}
+
 variable "egress_rule" {
     default = [ {
       description        = "egress all"
