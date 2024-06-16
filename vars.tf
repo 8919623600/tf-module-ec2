@@ -12,13 +12,15 @@ variable  "ingress_rule" {
       to_port         = 22
       protocol        = "tcp"
       cidr_blocks     = ["0.0.0.0/0"]
-  },
+      security_group_id = aws_security_group.sample_sg.id
+    }
     {
       description     = "web"
       from_port       = 80
       to_port         = 80
       protocol        = "tcp"
       cidr_blocks     = ["0.0.0.0/0"]
+      security_group_id = aws_security_group.sample_sg.id
   },
      {
       description     = "jenkins"
@@ -26,25 +28,28 @@ variable  "ingress_rule" {
       to_port         = 8080
       protocol        = "tcp"
       cidr_blocks     = ["0.0.0.0/0"]
+      security_group_id = aws_security_group.sample_sg.id
   },
      {
-      description     = "nexus"
-      from_port       = 8081
-      to_port         = 8081
-      protocol        = "tcp"
-      cidr_blocks     = ["0.0.0.0/0"]
+      description        = "nexus"
+      from_port          = 8081
+      to_port            = 8081
+      protocol           = "tcp"
+      cidr_blocks        = ["0.0.0.0/0"]
+      security_group_id  = aws_security_group.sample_sg.id
   }
     ]
 } 
 
-
+}
 variable "egress_rule" {
     default = [ {
-      description     = "egress all"
-      from_port       = 0
-      to_port         = 0
-      protocol        = "tcp"
-      cidr_blocks     = ["0.0.0.0/0"]
+      description        = "egress all"
+      from_port          = 0
+      to_port            = 0
+      protocol           = "tcp"
+      cidr_blocks        = ["0.0.0.0/0"]
+      security_group_id  = aws_security_group.sample_sg.id
     },
     ]
 }
