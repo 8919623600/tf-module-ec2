@@ -11,7 +11,6 @@ resource "aws_instance" "public_instance" {
   instance_type           = var.instance_type
   subnet_id               = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_IDS[0]
   vpc_security_group_ids  = [aws_security_group.sample_sg.id]
-  vpc_security_group_ids  = var.SG_ID
   
   
 
@@ -25,7 +24,7 @@ resource "aws_instance" "private_instance" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
   subnet_id               = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS[0]
-  vpc_security_group_ids  = var.SG_ID
+  vpc_security_group_ids  = [aws_security_group.sample_sg.id]
 
   
   tags = {
