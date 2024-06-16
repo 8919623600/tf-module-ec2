@@ -3,6 +3,10 @@ resource "aws_security_group" "sample_sg" {
   description = "Allow TLS inbound traffic and all outbound traffic"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
+  tags = {
+    Name = "terraform-sg"
+  }
+
 
 }
 
@@ -34,6 +38,4 @@ resource "aws_vpc_security_group_egress_rule" "allow_egress" {
    }
 }
 
-  tags = {
-    Name = "terraform-sg"
-  }
+
