@@ -21,7 +21,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ingress" {
     to_port           = ingress.value["to_port"]
     protocol          = ingress.value["protocol"]
     cidr_blocks       = ingress.value["cidr_blocks"]
-    security_group_id = ingress.value["security_group_id"]
+    security_group_id = aws_security_group.sample_sg.id
     }
   }
 }
@@ -35,7 +35,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_egress" {
       to_port           = egress.value["to_port"]
       protocol          = egress.value["protocol"]
       cidr_blocks       = egress.value["cidr_blocks"]
-      security_group_id = egress_rule.value["security_group_id"]
+      security_group_id = aws_security_group.sample_sg.id
     }
    }
 }
