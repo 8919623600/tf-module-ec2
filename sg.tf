@@ -30,7 +30,6 @@ tags = {
       cidr_blocks     = egress.value["cidr_blocks"]
     }
    }
-depends_on = [vpc_id]
 
 
 }
