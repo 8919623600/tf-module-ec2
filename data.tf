@@ -8,3 +8,9 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
+data "aws_ami" "ami" {
+  most_recent      = true
+  name_regex       = "devops-workstation-image"
+  owners           = ["851725330688"]
+
+}

@@ -1,11 +1,3 @@
-data "aws_ami" "ami" {
-  most_recent      = true
-  name_regex       = "devops-workstation-image"
-  owners           = ["851725330688"]
-
-
-}
-
 resource "aws_instance" "public_instance" {
   ami                     = data.aws_ami.ami.id  # fetching ami id from datasource
   instance_type           = var.instance_type
